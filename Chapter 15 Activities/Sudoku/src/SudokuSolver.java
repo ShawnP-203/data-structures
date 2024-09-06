@@ -36,21 +36,41 @@ public class SudokuSolver {
         }
 
         // create the list of sets for each row (this.rows)
-        // ...
+        this.rows = new ArrayList<HashSet<Integer>>();
+        for(int[] row: grid)
+        {
+            this.rows.add(new HashSet<Integer>());
+            for(int i: row)
+                this.rows.get(this.rows.size() - 1).add(i);
+        }
 
         // create the list of sets for each col (this.cols)
-        // ...
-
+        this.cols = new ArrayList<HashSet<Integer>>();
+        for(int i = 0; i < N; i++)
+        {
+            this.cols.add(new HashSet<Integer>());
+            for(int j = 0; j < N; j++)
+                this.cols.get(this.cols.size() - 1).add(this.grid[j][i]);
+        }
+        
         // create the list of sets for each square (this.squares)
         /* the squares are added to the list row-by-row:
             0 1 2
             3 4 5
             6 7 8
          */
-        // ...
+        this.squares = new ArrayList<HashSet<Integer>>();
+        for(int i = 0; i < N; i++)
+        {
+            this.squares.add(new HashSet<Integer>());
+            for(int j = 0; j < N; j++)
+                this.squares.get(this.squares.size() - 1)
+                            .add(this.grid[i / 3 * 3 + j / 3][i * 3 % 9 + j % 3]);
+        }
 
         // create a hash set for [1..9] (this.nums)
-        // ...
+        this.nums = new HashSet<Integer>();
+        for(int i = 1; i < 10; i++) nums.add(i);
 
         // visually inspect that all the sets are correct
         for (int row = 0; row < N; row++) {
