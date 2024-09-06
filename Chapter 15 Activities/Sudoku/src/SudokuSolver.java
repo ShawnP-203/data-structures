@@ -1,3 +1,11 @@
+/**
+ * Shawn Plackiyil
+ * Yutian Wang was my partner for this project.
+ * 
+ * 9-6-2024
+ * Sudoku Solver
+ */
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.*;
