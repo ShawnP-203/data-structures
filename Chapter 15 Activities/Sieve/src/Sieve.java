@@ -1,4 +1,6 @@
+import java.util.HashSet;
 import java.util.Scanner;
+import java.util.Set;
 
 
 /**
@@ -12,14 +14,18 @@ public class Sieve
         System.out.println("Compute primes up to which integer?");
         int n = in.nextInt();
 
-        // Your work goes here
-        . . .
+        Set<Integer> nums = new HashSet<Integer>();
+        for(int i = 2; i <= n; i++) nums.add(i);
 
+        for(int fac = 2; fac <= (int) Math.sqrt(n); fac++)
+        {
+            //The sentry variable starts at fac*2
+            //so the factor itself is not removed
+            for(int chk = fac * 2; chk <= n; chk += fac)
+                if(nums.contains(chk)) nums.remove(chk);
+        }
 
-
-
-
-
-
+        System.out.println(nums);
+        in.close();
     }
 }
