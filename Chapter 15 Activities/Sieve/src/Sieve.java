@@ -22,7 +22,7 @@ public class Sieve
             //The sentry variable starts at fac*2
             //so the factor itself is not removed
             for(int chk = fac * 2; chk <= n; chk += fac)
-                if(nums.contains(chk)) nums.remove(chk);
+                nums.remove(chk);
         }
 
         System.out.println(nums);
