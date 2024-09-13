@@ -8,32 +8,37 @@ import java.io.*;
  * Then print out the word sets in alphabetical order.
  * Use the Java 8 merge() feature.
 */
-public class FirstLetterMap
+public class FirstLetterMap1
 {
     public static void main(String[] args)
     {
-        String filename = "src/test1.txt";
+        String filename = "Chapter 15 Activities/FirstLetterMap/FirstLetterMap1/src/test1.txt";
 
         try (Scanner in = new Scanner(new File(filename)))
         {
 
             // Create your map here
-            ...
+            Map<Character, Set<String>> firstLets = new HashMap<>();
 
             while (in.hasNext())
             {
                 String word = clean(in.next());
+                HashSet<String> wordInCol = new HashSet<>();
+                wordInCol.add(word);
                 Character c = word.charAt(0);
 
                 // Update the map here
                 // Use the Java 8 merge method
-                . . .
+                firstLets.merge(c, wordInCol, (oldS, newS) ->
+                                              {oldS.addAll(newS); return oldS;});
 
             }
 
             // Print the map here in this form
             // a: [a, able, aardvark]
-            . . .
+            for(Character ch: firstLets.keySet())
+                System.out.println(ch + ": " + firstLets.get(ch));
+
         } catch (FileNotFoundException e)
         {
             System.out.println("Cannot open: " + filename);
