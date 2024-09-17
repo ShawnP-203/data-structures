@@ -1,7 +1,7 @@
 /**
    This class encapsulates a work order with a priority.
 */
-public class WorkOrder implements Comparable
+public class WorkOrder implements Comparable<Object>
 {
    private int priority;
    private String description;
