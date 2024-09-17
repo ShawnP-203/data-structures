@@ -29,7 +29,7 @@ public class StringLengthMap1
                 // Modify Worked Example 15.1
                 if(wordMap.get(len) == null)
                     wordMap.put(len, word);
-                else
+                else if(!wordMap.get(len).contains(word + ","))
                     wordMap.put(len, wordMap.get(len) + ", " + word);
             }
 
