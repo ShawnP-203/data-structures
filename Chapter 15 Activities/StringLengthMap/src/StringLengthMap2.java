@@ -27,15 +27,16 @@ public class StringLengthMap2
 
                 // Update the map here
                 // Use the Java 8 merge() method
-                wordMap.merge(len, word, (oldW, newW)
-                                          -> oldW + ", " + newW);
+                wordMap.merge(len, word, (oldW, newW) ->
+                        oldW.equals(word) || oldW.contains(", " + word)
+                        ? oldW : oldW + ", " + newW);
             }
 
             // Print the strings, in increasing order of their length
             // Use this format: 1: i, a, i
             for(Integer key: wordMap.keySet())
                 System.out.println(key + ": " + wordMap.get(key));
-            
+
         } catch (FileNotFoundException e)
         {
             System.out.println("Cannot open: " + filename);
