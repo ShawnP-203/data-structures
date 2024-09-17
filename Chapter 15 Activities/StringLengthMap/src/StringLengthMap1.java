@@ -29,7 +29,7 @@ public class StringLengthMap1
                 // Modify Worked Example 15.1
                 if(wordMap.get(len) == null)
                     wordMap.put(len, word);
-                else if(!wordMap.get(len).contains(word + ","))
+                else if(!(wordMap.get(len).equals(word) || wordMap.get(len).contains(", " + word)))
                     wordMap.put(len, wordMap.get(len) + ", " + word);
             }
 
@@ -37,7 +37,7 @@ public class StringLengthMap1
             // Use this format: 1: i, a, i
             for(Integer key: wordMap.keySet())
                 System.out.println(key + ": " + wordMap.get(key));
-                
+
         } catch (FileNotFoundException e)
         {
             System.out.println("Cannot open: " + filename);
