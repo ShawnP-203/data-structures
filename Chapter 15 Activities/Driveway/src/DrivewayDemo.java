@@ -19,11 +19,11 @@ public class DrivewayDemo
             }
             else if (licensePlate < 0)
             {
-                testDriveway.remove(0 - licensePlate);
+                testDriveway.remove(-licensePlate);
             }
             else
             {
-            	testDriveway.print();
+                testDriveway.print();
                 return;
             }
         }
