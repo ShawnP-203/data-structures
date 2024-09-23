@@ -10,9 +10,10 @@ public class DrivewayDemo
         System.out.println("Negative license numbers remove cars.");
         System.out.println("0 stops the simulation.");
 
-        while (in.hasNextInt())
+        int licensePlate = -1;
+        while (in.hasNextInt() && licensePlate != 0)
         {
-            int licensePlate = in.nextInt();
+            licensePlate = in.nextInt();
             if (licensePlate > 0)
             {
                 testDriveway.add(licensePlate);
@@ -24,8 +25,8 @@ public class DrivewayDemo
             else
             {
                 testDriveway.print();
-                return;
             }
         }
+        in.close();
     }
 }

@@ -1,5 +1,4 @@
 import java.util.Stack;
-import java.util.Scanner;
 
 /**
  * Class for simulating a driveway and a street, using stacks
