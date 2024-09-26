@@ -8,54 +8,75 @@ import java.util.NoSuchElementException;
 */
 public class LinkedList
 {
-
+    
+    private Node first;
 
     /**
         Constructs an empty linked list.
     */
-
-
-
+    public LinkedList()
+    {
+        this.first = null;
+    }
 
     /**
         Returns the first element in the linked list.
         @return the first element in the linked list
+        @throws NoSuchElementException if first node is null
     */
 
-
-
+    public Object getFirst() throws NoSuchElementException
+    {
+        if(this.first == null) throw new NoSuchElementException();
+        return this.first.data;
+    }
 
     /**
         Removes the first element in the linked list.
         @return the removed element
+        @throws NoSuchElementException if first node is null
     */
 
+    public Object removeFirst() throws NoSuchElementException
+    {
+        if(this.first == null) throw new NoSuchElementException();
 
-
-
+        Object element = this.first.data;
+        this.first = this.first.next;
+        return element;
+    }
 
     /**
         Adds an element to the front of the linked list.
         @param element the element to add
     */
 
-
-
-
+    public void addFirst(Object element) throws Throwable
+    {
+        Node newNode = new Node();
+        newNode.data = element;
+        newNode.next = this.first;
+        this.first = newNode;
+    }
 
     /**
         Returns an iterator for iterating through this list.
         @return an iterator for iterating through this list
     */
 
+    public ListIterator listIterator()
+    {
+        return new LinkedListIterator();
+    }
 
+    //Node is static because it does not need access to anything in LinkedList
+    static class Node
+    {
+        public Node next;
+        public Object data;
+    }
 
-
-
-    //Class Node
-
-
-    class LinkedListIterator //implements ListIterator
+    class LinkedListIterator implements ListIterator
     {
       //private data
 
