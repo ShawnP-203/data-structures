@@ -42,14 +42,13 @@ public class LinkedList
     public boolean contains(Object obj)
     {
         Node activeNode = first;
-        while(true)
+        while(activeNode != null)
         {
-            if(activeNode == null)
-                return false;
             if(activeNode.data.equals(obj))
                 return true;
             activeNode = activeNode.next;
         }
+        return false;
     }
 
     /**
