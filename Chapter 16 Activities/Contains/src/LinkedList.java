@@ -41,14 +41,14 @@ public class LinkedList
     */
     public boolean contains(Object obj)
     {
-        return contains(first, obj);
-    }
-
-    private static boolean contains(Node start, Object obj)
-    {
-        if(start == null)
-            return false;
-        return start.data.equals(obj) || contains(start.next, obj);
+        Node activeNode = first;
+        while(activeNode != null)
+        {
+            if(activeNode.data.equals(obj))
+                return true;
+            activeNode = activeNode.next;
+        }
+        return false;
     }
 
     /**
