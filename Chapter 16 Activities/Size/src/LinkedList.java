@@ -24,16 +24,16 @@ public class LinkedList
     */
     public int size()
     {
-        int i = 0;
-        Node activeNode = first;
-        while(activeNode != null)
-        {
-            i++;
-            activeNode = activeNode.next;
-        }
-        return i;
+        return size(first);
     }
 
+    private static int size(Node start)
+    {
+        if(start == null)
+            return 0;
+        return size(start.next) + 1;
+    }
+    
     /**
         Returns the first element in the linked list.
         @return the first element in the linked list
