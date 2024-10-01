@@ -2,7 +2,7 @@ public class StackDemo
 {
     public static void main(String[] args)
     {
-        /*
+        
         LinkedListStack stack = new LinkedListStack();
 
         stack.push("Tom");
@@ -11,10 +11,9 @@ public class StackDemo
 
         while(!stack.empty())
         {
-            System.out.println(stack.pop());
+            System.out.print(stack.pop() + " ");
         }
 
-        System.out.println("Expected: Harry Diana Tom");
-        */
+        System.out.println("\nExpected: Harry Diana Tom");
     }
 }
