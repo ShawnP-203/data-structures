@@ -22,12 +22,9 @@ public class LinkedListQueue
     */
     public void lastToFirst()
     {
-        . . .
+        if(head == null) return;
 
-
-
-
-
+        for(Node targetNode = head; targetNode.next != null; targetNode = targetNode.next);
     }
 
     /**
