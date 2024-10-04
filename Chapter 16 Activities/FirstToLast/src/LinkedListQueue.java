@@ -23,11 +23,13 @@ public class LinkedListQueue
     */
     public void firstToLast()
     {
-        if(head == null) return;
+        //If queue has only 1 element or none at all
+        if(head == tail) return;
 
         Object headData = head.data;
 
-        for(Node targetNode = head; targetNode.next != null; targetNode = targetNode.next)
+        for(Node targetNode = head; targetNode.next != null;
+                                    targetNode = targetNode.next)
             targetNode.data = targetNode.next.data;
         
         tail.data = headData;

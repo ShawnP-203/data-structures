@@ -22,9 +22,19 @@ public class LinkedListQueue
     */
     public void lastToFirst()
     {
-        if(head == null) return;
-
-        for(Node targetNode = head; targetNode.next != null; targetNode = targetNode.next);
+        //If queue has only one element or none at all
+        if(head == tail) return;
+        
+        Object tailData = tail.data;
+        lastToFirst(head);
+        head.data = tailData;
+    }
+    
+    private void lastToFirst(Node targetNode)
+    {
+        if(targetNode.next != tail) lastToFirst(targetNode.next);
+        
+        targetNode.next.data = targetNode.data;
     }
 
     /**
