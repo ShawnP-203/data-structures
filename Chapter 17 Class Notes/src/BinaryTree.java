@@ -10,7 +10,7 @@ public class BinaryTree
     */
     public BinaryTree()
     {
-         
+        root = null;
     } 
 
     /**
@@ -19,7 +19,7 @@ public class BinaryTree
     */
     public BinaryTree(Object rootData) 
     {
-        
+        this(rootData, null, null);
     }
 
     /**
@@ -30,12 +30,17 @@ public class BinaryTree
     */
     public BinaryTree(Object rootData, BinaryTree left, BinaryTree right)
     {
-        
+        root = new Node();
+        root.data = rootData;
+        root.left = left.root;
+        root.right = right.root;
     }
     
     static class Node
     {
-        
+        public Object data;
+        public Node left;
+        public Node right;
     }
 
     /**
@@ -45,7 +50,8 @@ public class BinaryTree
     */
     private static int height(Node n)
     {
-        return 0;
+        return n == null? 0:
+            Math.max(height(n.left), height(n.right)) + 1;
     }
 
     /**
@@ -54,7 +60,7 @@ public class BinaryTree
     */
     public int height()
     {
-        return 0;
+        return height(root);
     }
 
     /**
@@ -63,7 +69,7 @@ public class BinaryTree
     */
     public boolean isEmpty()
     {
-         return false;
+        return root == null;
     }
 
     /**
@@ -72,7 +78,7 @@ public class BinaryTree
     */
     public Object data()
     {
-         return null;
+        return root.data;
     }
     
     /**
@@ -80,8 +86,10 @@ public class BinaryTree
         @return the left child of the root
     */
     public BinaryTree left() 
-    { 
-        return null;
+    {
+        BinaryTree subtree = new BinaryTree();
+        subtree.root = root.left;
+        return subtree;
     }
 
     /**
@@ -90,6 +98,8 @@ public class BinaryTree
     */
     public BinaryTree right() 
     { 
-        return null;
+        BinaryTree subtree = new BinaryTree();
+        subtree.root = root.right;
+        return subtree;
     }
 }
