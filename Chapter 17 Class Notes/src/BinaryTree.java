@@ -19,7 +19,10 @@ public class BinaryTree
     */
     public BinaryTree(Object rootData) 
     {
-        this(rootData, null, null);
+        root = new Node();
+        root.data = rootData;
+        root.left = null;
+        root.right = null;
     }
 
     /**
@@ -30,10 +33,11 @@ public class BinaryTree
     */
     public BinaryTree(Object rootData, BinaryTree left, BinaryTree right)
     {
-        root = new Node();
-        root.data = rootData;
-        root.left = left.root;
-        root.right = right.root;
+        this(rootData);
+        if(left != null)
+            root.left = left.root;
+        if(right != null)
+            root.right = right.root;
     }
     
     static class Node
@@ -101,5 +105,26 @@ public class BinaryTree
         BinaryTree subtree = new BinaryTree();
         subtree.root = root.right;
         return subtree;
+    }
+
+    public int countNodesWithOneChild()
+    {
+        return countNodesWithOneChild(root);
+    }
+
+    private static int countNodesWithOneChild(Node candidate)
+    {
+        if(candidate.left == null && candidate.right != null)
+        {
+            return countNodesWithOneChild(candidate.right) + 1;
+        }
+        else if (candidate.left != null && candidate.right == null){
+            return countNodesWithOneChild(candidate.left) + 1;
+        }
+        else if (candidate.left != null && candidate.right != null)
+        {
+            return countNodesWithOneChild(candidate.left) + countNodesWithOneChild(candidate.right);
+        }
+        return 0;
     }
 }

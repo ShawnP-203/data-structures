@@ -55,4 +55,23 @@ public class Tree
     }
 
     // Additional methods will be added in later sections.
+    public int leafCount()
+    {
+        return leafCount(root);
+    }
+
+    private static int leafCount(Node candidate)
+    {
+        if(candidate.children.isEmpty())
+            return 1;
+        else
+        {
+            int x = 0;
+            for(Node child: candidate.children)
+            {
+               x += leafCount(child); 
+            }
+            return x;
+        }
+    }
 }

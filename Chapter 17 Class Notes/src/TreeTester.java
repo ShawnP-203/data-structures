@@ -22,6 +22,17 @@ public class TreeTester
       t.remove("D"); // Removing root
       t.print();
       System.out.println("Expected: C E G H I J");
+
+      Tree tree = new Tree("A");
+      Tree tree2 = new Tree("B");
+      Tree tree3 = new Tree("C");
+      Tree tree4 = new Tree("D");
+      Tree tree5 = new Tree("e");
+      tree4.addSubtree(tree5);
+      tree.addSubtree(tree2);
+      tree.addSubtree(tree3);
+      tree.addSubtree(tree4);
+      System.out.println("Leaves (should be 3): " +tree.leafCount());
    }
 }
 
